@@ -1,6 +1,6 @@
 # React Global Mentoring Program (Task 2: Webpack)
 
-** Getting Started **
+**Getting Started**
 
 - Install dependencies:
 `npm install`
