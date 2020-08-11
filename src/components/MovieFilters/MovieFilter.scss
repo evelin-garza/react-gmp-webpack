@@ -1,0 +1,51 @@
+.movie-filters {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #555555;
+    color: #FFF;
+    font-weight: 300;
+    align-items: baseline;
+
+    .categories {
+        display: flex;
+
+        span {
+            padding: 10px 0;
+
+            &:not(:first-child) {
+                margin-left: 15px;
+            }
+
+            &.active {
+                border-bottom: 2px solid #F65261;
+                ;
+            }
+        }
+    }
+
+    .sorting {
+        display: flex;
+
+        p:not(.select) {
+            color: rgba(255, 255, 255, .7);
+        }
+
+        .select {
+            margin-left: 20px;
+            padding-right: 15px;
+            position: relative;
+
+            &::after {
+                content: '';
+                position: absolute;
+                right: 0;
+                top: 50%;
+                width: 0;
+                height: 0;
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-top: 5px solid #F65261;
+            }
+        }
+    }
+}

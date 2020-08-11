@@ -1,0 +1,16 @@
+.content {
+    background: #424242;
+    padding-top: 10px;
+    min-height: calc(100vh - 295px);
+    display: flex;
+    flex-direction: column;
+
+    .error-message {
+        text-align: center;
+        color: rgba(255, 255, 255, .6);
+        margin-top: 20px;
+        margin-bottom: auto;
+        font-weight: 300;
+        font-size: 18px;
+    }
+}

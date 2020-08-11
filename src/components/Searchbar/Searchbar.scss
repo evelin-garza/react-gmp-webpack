@@ -1,0 +1,26 @@
+.searchbar {
+    display: flex;
+    margin: 20px 0;
+
+    .search-input {
+        border: 0;
+        flex-grow: 1;
+        padding: 15px;
+        border-radius: 6px;
+        background: rgba(#555555, 0.9);
+        font-size: 18px;
+        color: #FFF;
+        font-weight: 200;
+        outline: none;
+    }
+
+    .btn-search {
+        padding: 10px 60px;
+        color: #FFF;
+        margin-left: 20px;
+        border-radius: 6px;
+        background: #F65261;
+        border: 0;
+        font-size: 18px;
+    }
+}

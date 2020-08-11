@@ -1,0 +1,41 @@
+.movie-card {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 31%;
+    margin-bottom: 5%;
+
+    .movie-image {
+        max-width: 100%;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .movie-details {
+        display: flex;
+        flex-direction: column;
+        color: rgba(255, 255, 255, .8);
+        margin-top: 10px;
+
+        .movie-info {
+            display: flex;
+            justify-content: space-between;
+
+            .movie-title {
+                font-size: 18px;
+            }
+
+            .movie-year {
+                border: 1px solid rgba(255, 255, 255, .6);
+                padding: 3px 10px;
+                border-radius: 4px;
+                font-size: 14px;
+            }
+        }
+
+        .movie-genre {
+            color: rgba(255, 255, 255, .6);
+        }
+    }
+}
