@@ -1,4 +1,4 @@
-# React Global Mentoring Program (Task 2: Webpack)
+# React Global Mentoring Program (Task 3: Components part 1)
 
 **Getting Started**
 
