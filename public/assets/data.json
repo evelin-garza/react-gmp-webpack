@@ -1,0 +1,91 @@
+[{
+        "id": 1,
+        "title": "Bohemian Rhapsody",
+        "movieUrl": "https://upload.wikimedia.org/wikipedia/en/2/2e/Bohemian_Rhapsody_poster.png",
+        "release_date": "2019-11-01",
+        "overview": "The story of the legendary British rock band Queen and lead singer Freddie Mercury",
+        "runtime": "2h 13m",
+        "genres": [{
+            "id": 6,
+            "name": "Drama"
+        }]
+    }, {
+        "id": 2,
+        "title": "Inception",
+        "movieUrl": "https://movieposters2.com/images/639314-b.jpg",
+        "release_date": "2010-07-31",
+        "overview": "Inception is a 2010 science fiction action film",
+        "runtime": "2h 42m",
+        "genres": [{
+                "id": 3,
+                "name": "Action"
+            },
+            {
+                "id": 2,
+                "name": "Adventure"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "title": "Avengers: Infinity War",
+        "movieUrl": "https://upload.wikimedia.org/wikipedia/en/4/4d/Avengers_Infinity_War_poster.jpg",
+        "release_date": "2018-27-04",
+        "overview": "American superhero film based on the Marvel Comics",
+        "runtime": "2h 40m",
+        "genres": [{
+                "id": 3,
+                "name": "Action"
+            },
+            {
+                "id": 5,
+                "name": "Science Fiction"
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "title": "Kill Bill: Vol 2",
+        "movieUrl": "https://upload.wikimedia.org/wikipedia/en/c/c4/Kill_Bill_Volume_2.png",
+        "release_date": "2004-16-04",
+        "overview": "American martial arts film",
+        "runtime": "2h 18m",
+        "genres": [{
+            "id": 3,
+            "name": "Action"
+        }]
+    },
+    {
+        "id": 5,
+        "title": "Crazy, Stupid, Love",
+        "movieUrl": "https://upload.wikimedia.org/wikipedia/en/7/78/CrazyStupidLovePoster.jpg",
+        "release_date": "2011-19-07",
+        "overview": "American romantic comedy film",
+        "runtime": "2h 20m",
+        "genres": [{
+                "id": 1,
+                "name": "Comedy"
+            },
+            {
+                "id": 4,
+                "name": "Romance"
+            },
+            {
+                "id": 6,
+                "name": "Drama"
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "title": "Harry Potter and the Deathly Hallows",
+        "movieUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn_ZwSEfi2qnp0pcpDPzt9g6kiJzuoEGj73VHnZjdO7vHwidef",
+        "release_date": "2010-19-11",
+        "overview": "Fantasy novel written by British author J. K. Rowling",
+        "runtime": "2h 26m",
+        "genres": [{
+            "id": 7,
+            "name": "Fantasy"
+        }]
+    }
+]
