@@ -1,19 +1,39 @@
 .header {
-    background: rgba(85, 85, 85, 0.9);
     padding: 20px 0;
     display: flex;
     flex-direction: column;
+    position: relative;
+
+    &::after {
+        content: "";
+        background: url("https://images4.alphacoders.com/288/288218.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        opacity: 0.8;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        z-index: -1;
+    }
 
     .top-bar {
         display: flex;
         justify-content: space-between;
 
         .btn-add-movie {
-            background: rgba(#555555, 0.7);
+            background: #555555;
             color: #F65261;
             border: 0;
             border-radius: 6px;
             padding: 10px 20px;
+            cursor: pointer;
+            opacity: 0.89;
+
+            &:hover {
+                opacity: 1;
+            }
         }
     }
 
