@@ -3,12 +3,43 @@
     flex-direction: column;
     flex-basis: 31%;
     margin-bottom: 5%;
+    position: relative;
 
     .movie-image {
         max-width: 100%;
+        position: relative;
 
         img {
             width: 100%;
+        }
+
+        &:hover {
+            &+.movie-options>.movie-options-icon {
+                display: flex;
+            }
+        }
+    }
+
+    .movie-options {
+        position: absolute;
+        top: 0;
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+
+        .movie-options-icon {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #424242;
+            color: #FFF;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 20;
         }
     }
 
