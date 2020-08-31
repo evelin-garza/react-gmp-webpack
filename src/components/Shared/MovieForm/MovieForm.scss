@@ -1,0 +1,64 @@
+.form-control {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    label {
+        font-size: 18px;
+        color: #F65261;
+        margin-bottom: 5px;
+    }
+
+    input {
+        background: #555555;
+        border-radius: 4px;
+        height: 45px;
+        border: 0;
+        outline: none;
+        padding: 0 20px;
+        font-size: 17px;
+        color: white;
+        font-weight: 200;
+
+        &:disabled {
+            background: transparent;
+            height: auto;
+        }
+
+        &.searchBox {
+            height: auto;
+        }
+    }
+
+    input[type="date"] {
+        position: relative;
+
+        &::-webkit-calendar-picker-indicator {
+            color: transparent;
+            background: none;
+            z-index: 1;
+        }
+
+        &:after {
+            position: absolute;
+            content: '\f073';
+            font-family: 'FontAwesome';
+            color: #f65261;
+            right: 10px;
+        }
+    }
+
+    .movie-genre-container {
+        position: relative;
+
+        &::after {
+            position: absolute;
+            top: 13px;
+            right: 10px;
+            content: '\f0d7';
+            font-family: 'FontAwesome';
+            color: #f65261;
+            pointer-events: none;
+        }
+    }
+}
