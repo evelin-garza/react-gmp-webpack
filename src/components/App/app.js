@@ -11,8 +11,15 @@ import "./App.scss";
 export default class App extends Component {
     state = {
         isModalOpened: false,
-        modalType: ''
+        modalType: '',
+        sortBy: ''
     };
+
+    componentDidMount() {
+        this.setState({
+            sortBy: 'release_date'
+        });
+    }
 
     showOrHideModal = (isModalOpened, modalType = '') => {
         this.setState({
@@ -26,6 +33,12 @@ export default class App extends Component {
         document.body.style.overflow = (isModalOpened) ? 'hidden' : 'unset';
     }
 
+    setSortBy = (property) => {
+        this.setState({
+            sortBy: property
+        });
+    }
+
     render() {
         return (
             <>
@@ -34,12 +47,15 @@ export default class App extends Component {
                     modalType={this.state.modalType}
                     showOrHideModal={this.showOrHideModal} />
                 <div className="content">
-                    <MovieFilters />
+                    <MovieFilters
+                        sortBy={this.state.sortBy}
+                        setSortBy={this.setSortBy} />
                     <ErrorBoundary hasErrors={false}>
                         <MoviesList
                             isModalOpened={this.state.isModalOpened}
                             modalType={this.state.modalType}
-                            showOrHideModal={this.showOrHideModal} />
+                            showOrHideModal={this.showOrHideModal}
+                            sortBy={this.state.sortBy} />
                     </ErrorBoundary>
                     <Footer><Logo /></Footer>
                 </div>

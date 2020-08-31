@@ -30,9 +30,19 @@
             color: rgba(255, 255, 255, .7);
         }
 
-        .select {
+        select {
+            appearance: none;
+            background: transparent;
+            border: 0;
+            color: white;
+            font-weight: 200;
+            text-transform: uppercase;
+            padding-right: 20px;
+            outline: none;
+        }
+
+        .select-sort-container {
             margin-left: 20px;
-            padding-right: 15px;
             position: relative;
 
             &::after {

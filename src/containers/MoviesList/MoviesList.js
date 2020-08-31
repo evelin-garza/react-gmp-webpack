@@ -21,6 +21,40 @@ export default class MoviesList extends Component {
         this.setState({ currentMovie: movie });
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.sortBy !== this.props.sortBy) {
+            this.applySort();
+        }
+    }
+
+    applySort = () => {
+        this.setState({ moviesList: this.state.moviesList.sort(this.sortByProperty(this.props.sortBy)) });
+    }
+
+    sortByProperty = (property) => {
+        const customSort = (firstElement, secondElement) => {
+            if (!firstElement.hasOwnProperty(property) || !secondElement.hasOwnProperty(property)) {
+                return 0;
+            }
+
+            const firstValue = (typeof firstElement[property] === 'string') ?
+                firstElement[property].toUpperCase() : firstElement[property];
+
+            const secondValue = (typeof secondElement[property] === 'string') ?
+                secondElement[property].toUpperCase() : secondElement[property];
+
+            let result = 0;
+            if (firstValue > secondValue) {
+                result = 1;
+            } else if (firstValue < secondValue) {
+                result = -1;
+            }
+            return result;
+        };
+
+        return customSort;
+    }
+
     render() {
         const movies = this.state.moviesList;
         const currentMovie = this.state.currentMovie;

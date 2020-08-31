@@ -76,13 +76,13 @@ export default class MovieForm extends Component {
 
 MovieForm.propTypes = {
     movie: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        title: PropTypes.string.isRequired,
-        movieUrl: PropTypes.string.isRequired,
-        release_date: PropTypes.string.isRequired,
-        overview: PropTypes.string.isRequired,
-        runtime: PropTypes.string.isRequired,
-        genres: PropTypes.array.isRequired,
+        id: PropTypes.number,
+        title: PropTypes.string,
+        movieUrl: PropTypes.string,
+        release_date: PropTypes.string,
+        overview: PropTypes.string,
+        runtime: PropTypes.string,
+        genres: PropTypes.array,
     })
 };
 
