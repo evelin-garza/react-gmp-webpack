@@ -1,0 +1,26 @@
+.popup-container {
+    position: absolute;
+    width: 30%;
+    background: #424242;
+    border-radius: 4px;
+    top: 45px;
+    overflow: hidden;
+
+    .popup-options-list {
+        color: #FFF;
+        font-weight: 200;
+
+        .popup-option-item {
+            padding: 5px 10px;
+            cursor: pointer;
+
+            &:hover {
+                background: #555555;
+            }
+
+            &:not(:last-child) {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+            }
+        }
+    }
+}
