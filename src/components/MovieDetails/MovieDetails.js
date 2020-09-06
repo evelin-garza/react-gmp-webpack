@@ -14,7 +14,9 @@ const MovieDetails = ({ selectedMovie, onClose }) => {
             <div className="container">
                 <div className="topbar">
                     <Logo />
-                    <label onClick={onClose}>X</label>
+                    <span className="search-icon" onClick={onClose}>
+                        <i className="fa fa-search" aria-hidden="true"></i>
+                    </span>
                 </div>
                 <div className="movie-content">
                     <img alt={selectedMovie.title} src={selectedMovie.movieUrl} />
