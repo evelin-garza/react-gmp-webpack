@@ -1,26 +1,27 @@
-import React, { Component } from "react";
+import React from "react";
 
 import "./Modal.scss";
 
-export default class Modal extends Component {
+const Modal = (props) => {
 
-    onCloseModal = () => {
-        this.props.onClose(false);
+    const onCloseModal = () => {
+        props.onClose(false);
     }
 
-    render() {
-        if (!this.props.show) {
-            return null;
-        }
-        return (
-            <div className="modal-container">
-                <div className="modal">
-                    <button className="close-modal" onClick={this.onCloseModal}>
-                        <i className="fa fa-times" aria-hidden="true"></i>
-                    </button>
-                    {this.props.children}
-                </div>
+    if (!props.show) {
+        return null;
+    }
+
+    return (
+        <div className="modal-container">
+            <div className="modal">
+                <button className="close-modal" onClick={onCloseModal}>
+                    <i className="fa fa-times" aria-hidden="true"></i>
+                </button>
+                {props.children}
             </div>
-        );
-    }
-}
+        </div>
+    );
+};
+
+export default Modal;

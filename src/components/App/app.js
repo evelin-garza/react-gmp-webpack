@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import Header from "../Header/Header";
 import MoviesList from "../../containers/MoviesList/MoviesList";
 import Footer from "../../components/Footer/Footer";
@@ -8,58 +8,24 @@ import ErrorBoundary from "../../components/ErrorBoundary/ErrorBoundary";
 
 import "./App.scss";
 
-export default class App extends Component {
-    state = {
-        isModalOpened: false,
-        modalType: '',
-        sortBy: ''
-    };
+const App = () => {
+    const [sortBy, setSortBy] = useState('release_date');
 
-    componentDidMount() {
-        this.setState({
-            sortBy: 'release_date'
-        });
-    }
+    return (
+        <>
+            <Header />
+            <div className="content">
+                <MovieFilters
+                    sortBy={sortBy}
+                    setSortBy={setSortBy} />
+                <ErrorBoundary hasErrors={false}>
+                    <MoviesList
+                        sortBy={sortBy} />
+                </ErrorBoundary>
+                <Footer><Logo /></Footer>
+            </div>
+        </>
+    );
+};
 
-    showOrHideModal = (isModalOpened, modalType = '') => {
-        this.setState({
-            isModalOpened,
-            modalType
-        });
-        this.setBodyStyleOverflow(isModalOpened);
-    }
-
-    setBodyStyleOverflow = (isModalOpened) => {
-        document.body.style.overflow = (isModalOpened) ? 'hidden' : 'unset';
-    }
-
-    setSortBy = (property) => {
-        this.setState({
-            sortBy: property
-        });
-    }
-
-    render() {
-        return (
-            <>
-                <Header
-                    isModalOpened={this.state.isModalOpened}
-                    modalType={this.state.modalType}
-                    showOrHideModal={this.showOrHideModal} />
-                <div className="content">
-                    <MovieFilters
-                        sortBy={this.state.sortBy}
-                        setSortBy={this.setSortBy} />
-                    <ErrorBoundary hasErrors={false}>
-                        <MoviesList
-                            isModalOpened={this.state.isModalOpened}
-                            modalType={this.state.modalType}
-                            showOrHideModal={this.showOrHideModal}
-                            sortBy={this.state.sortBy} />
-                    </ErrorBoundary>
-                    <Footer><Logo /></Footer>
-                </div>
-            </>
-        );
-    }
-}
+export default App;
