@@ -7,20 +7,26 @@ import MovieFilters from "../../components/MovieFilters/MovieFilters";
 import ErrorBoundary from "../../components/ErrorBoundary/ErrorBoundary";
 
 import "./App.scss";
+import MovieContext from "../../Hooks/Context/MovieContext";
 
 const App = () => {
     const [sortBy, setSortBy] = useState('release_date');
+    const [selectedMovie, setSelectedMovie] = useState(null);
 
     return (
         <>
-            <Header />
+            <Header selectedMovie={selectedMovie} setSelectedMovie={setSelectedMovie} />
             <div className="content">
                 <MovieFilters
                     sortBy={sortBy}
                     setSortBy={setSortBy} />
                 <ErrorBoundary hasErrors={false}>
-                    <MoviesList
-                        sortBy={sortBy} />
+                    <MovieContext.Provider value={{
+                        setSelectedMovie
+                    }}>
+                        <MoviesList
+                            sortBy={sortBy} />
+                    </MovieContext.Provider>
                 </ErrorBoundary>
                 <Footer><Logo /></Footer>
             </div>

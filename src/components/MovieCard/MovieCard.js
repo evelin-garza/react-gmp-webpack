@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Popup from "../Shared/Popup/Popup";
 import EditMovieModal from "../../components/EditMovieModal/EditMovieModal";
 import DeleteMovieModal from "../../components/DeleteMovieModal/DeleteMovieModal";
 
 import "./MovieCard.scss";
+import MovieContext from "../../Hooks/Context/MovieContext";
 
 const MovieCard = (props) => {
     const [isEditMovieOpen, setIsEditMovieOpen] = useState(false);
     const [isDeleteMovieOpen, setIsDeleteMovieOpen] = useState(false);
     const [isPopupOpen, setIsPopupOpen] = useState(false);
+    const { setSelectedMovie } = useContext(MovieContext);
 
     const showOrHideEditMovie = (isOpen) => {
         setIsEditMovieOpen(isOpen);
@@ -47,12 +49,17 @@ const MovieCard = (props) => {
         return date[0];
     }
 
+    const showMovieDetails = () => {
+        setSelectedMovie(props.movie);
+        window.scrollTo(0, 0);
+    }
+
     const { title, movieUrl, release_date, genres } = props.movie;
 
     return (
         <div className="movie-card">
             <div className="movie-image">
-                <img src={movieUrl} alt={title} />
+                <img src={movieUrl} alt={title} onClick={showMovieDetails} />
             </div>
             <div className="movie-options">
                 <span className="movie-options-icon" onClick={showOrHideMovieOptions}>

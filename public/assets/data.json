@@ -5,6 +5,8 @@
         "release_date": "2019-11-01",
         "overview": "The story of the legendary British rock band Queen and lead singer Freddie Mercury",
         "runtime": "2h 13m",
+        "rating": "4.8",
+        "description": "Description...",
         "genres": [{
             "id": 6,
             "name": "Drama"
@@ -16,6 +18,8 @@
         "release_date": "2010-07-31",
         "overview": "Inception is a 2010 science fiction action film",
         "runtime": "2h 42m",
+        "rating": "4.2",
+        "description": "Description...",
         "genres": [{
                 "id": 3,
                 "name": "Action"
@@ -33,6 +37,8 @@
         "release_date": "2018-27-04",
         "overview": "American superhero film based on the Marvel Comics",
         "runtime": "2h 40m",
+        "rating": "4.7",
+        "description": "Description...",
         "genres": [{
                 "id": 3,
                 "name": "Action"
@@ -50,6 +56,8 @@
         "release_date": "2004-16-04",
         "overview": "American martial arts film",
         "runtime": "2h 18m",
+        "rating": "4.4",
+        "description": "Description...",
         "genres": [{
             "id": 3,
             "name": "Action"
@@ -62,6 +70,8 @@
         "release_date": "2011-19-07",
         "overview": "American romantic comedy film",
         "runtime": "2h 20m",
+        "rating": "4.5",
+        "description": "Description...",
         "genres": [{
                 "id": 1,
                 "name": "Comedy"
@@ -83,6 +93,8 @@
         "release_date": "2010-19-11",
         "overview": "Fantasy novel written by British author J. K. Rowling",
         "runtime": "2h 26m",
+        "rating": "4.9",
+        "description": "Description...",
         "genres": [{
             "id": 7,
             "name": "Fantasy"
