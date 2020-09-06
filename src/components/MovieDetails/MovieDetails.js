@@ -32,7 +32,7 @@ const MovieDetails = ({ selectedMovie, onClose }) => {
                         </div>
 
                         <p className="description">
-                            {selectedMovie.description}
+                            {selectedMovie.overview}
                         </p>
                     </div>
                 </div>
