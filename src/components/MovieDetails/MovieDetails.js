@@ -20,13 +20,13 @@ const MovieDetails = ({ selectedMovie, onClose }) => {
                     <img alt={selectedMovie.title} src={selectedMovie.movieUrl} />
                     <div className="info">
                         <div className="row">
-                            <span>{selectedMovie.title}</span>
-                            <span>{selectedMovie.rating}</span>
+                            <span className="title">{selectedMovie.title}</span>
+                            <span className="rating">{selectedMovie.rating}</span>
                         </div>
 
                         <div className="row">
-                            <span>{getMovieYear(selectedMovie.release_date)}</span>
-                            <span>{selectedMovie.runtime}</span>
+                            <span className="release-date">{getMovieYear(selectedMovie.release_date)}</span>
+                            <span className="duration">{selectedMovie.runtime}</span>
                         </div>
 
                         <p className="description">

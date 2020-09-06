@@ -17,14 +17,50 @@
         }
 
         .info {
+            flex-grow: 1;
             margin-left: 30px;
 
             .row {
                 display: flex;
+                margin-bottom: 20px;
+                align-items: baseline;
 
                 span {
                     margin-right: 20px;
+
+                    &.title {
+                        color: #FFF;
+                        font-size: 42px;
+                        font-weight: 200;
+                        max-width: 60%;
+                    }
+
+                    &.rating {
+                        color: #6E9F4D;
+                        border: 1px solid #565656;
+                        border-radius: 50%;
+                        width: 60px;
+                        height: 60px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 28px;
+                        font-weight: 200;
+                    }
+
+                    &.release-date,
+                    &.duration {
+                        color: #F65261;
+                        font-size: 26px;
+                        font-weight: 200;
+                    }
                 }
+            }
+
+            .description {
+                color: #FFF;
+                font-size: 18px;
+                font-weight: 200;
             }
         }
     }
