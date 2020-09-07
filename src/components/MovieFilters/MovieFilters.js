@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 import "./MovieFilter.scss";
 
@@ -42,6 +43,10 @@ const MovieFilters = (props) => {
             </div>
         </div>
     );
+};
+
+MovieFilters.propTypes = {
+    setSortBy: PropTypes.func
 };
 
 export default MovieFilters;

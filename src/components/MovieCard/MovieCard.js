@@ -5,6 +5,7 @@ import DeleteMovieModal from "../../components/DeleteMovieModal/DeleteMovieModal
 
 import "./MovieCard.scss";
 import MovieContext from "../../Hooks/Context/MovieContext";
+import PropTypes from "prop-types";
 
 const MovieCard = (props) => {
     const [isEditMovieOpen, setIsEditMovieOpen] = useState(false);
@@ -90,6 +91,18 @@ const MovieCard = (props) => {
             </>
         </div>
     );
-}
+};
+
+MovieCard.propTypes = {
+    movie: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        movieUrl: PropTypes.string.isRequired,
+        release_date: PropTypes.string.isRequired,
+        overview: PropTypes.string.isRequired,
+        runtime: PropTypes.string.isRequired,
+        genres: PropTypes.array.isRequired,
+    }).isRequired
+};
 
 export default MovieCard;

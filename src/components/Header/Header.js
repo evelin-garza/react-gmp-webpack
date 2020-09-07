@@ -3,6 +3,7 @@ import Logo from "../Logo/Logo";
 import Searchbar from "../Searchbar/Searchbar";
 import AddMovieModal from "../AddMovieModal/AddMovieModal";
 import MovieDetails from "../MovieDetails/MovieDetails";
+import PropTypes from "prop-types";
 
 import "./Header.scss";
 
@@ -46,5 +47,10 @@ const Header = (props) => {
         </header>
     );
 };
+
+Header.propTypes = {
+    setSelectedMovie: PropTypes.func,
+    selectedMovie: PropTypes.object
+}
 
 export default Header;
