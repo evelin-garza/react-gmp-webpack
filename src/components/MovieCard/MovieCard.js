@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useCallback } from "react";
 import Popup from "../Shared/Popup/Popup";
 import EditMovieModal from "../../components/EditMovieModal/EditMovieModal";
 import DeleteMovieModal from "../../components/DeleteMovieModal/DeleteMovieModal";
@@ -12,17 +12,17 @@ const MovieCard = (props) => {
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const { setSelectedMovie } = useContext(MovieContext);
 
-    const showOrHideEditMovie = (isOpen) => {
+    const showOrHideEditMovie = useCallback((isOpen) => {
         setIsEditMovieOpen(isOpen);
         setBodyStyleOverflow(isOpen);
         setIsPopupOpen(false);
-    };
+    }, [isEditMovieOpen, isPopupOpen]);
 
-    const showOrHideDeleteMovie = (isOpen) => {
+    const showOrHideDeleteMovie = useCallback((isOpen) => {
         setIsDeleteMovieOpen(isOpen);
         setBodyStyleOverflow(isOpen);
         setIsPopupOpen(false);
-    };
+    }, [isDeleteMovieOpen, isPopupOpen]);
 
     const setBodyStyleOverflow = (isOpen) => {
         document.body.style.overflow = (isOpen) ? 'hidden' : 'unset';

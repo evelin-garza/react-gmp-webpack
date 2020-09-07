@@ -30,6 +30,7 @@
     "webpack-merge": "^5.1.0"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.11.5",
     "multiselect-react-dropdown": "^1.5.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

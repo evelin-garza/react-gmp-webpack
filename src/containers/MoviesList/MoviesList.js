@@ -1,30 +1,28 @@
-import React, { Component } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import MovieCard from "../../components/MovieCard/MovieCard";
 import mockData from "../../../public/assets/data.json";
 
 import "./MoviesList.scss";
+import { useFetch } from "../../Hooks/Custom/useFetch";
+import Loader from "../../components/Shared/Loader/Loader";
 
-export default class MoviesList extends Component {
-    state = {
-        moviesList: []
-    };
+const MoviesList = ({ sortBy }) => {
+    const [movies, setMovies] = useState(mockData);
+    const isComponentMounted = useRef(true);
 
-    componentDidMount() {
-        this.setState({ moviesList: mockData });
+    const { data, loading } = useFetch(
+        mockData,
+        isComponentMounted,
+        []
+    );
+
+    useEffect(() => { applySort(); }, [sortBy]);
+
+    const applySort = () => {
+        setMovies(movies.sort(sortByProperty(sortBy)));
     }
 
-    componentDidUpdate(prevProps) {
-        if (prevProps.sortBy !== this.props.sortBy) {
-            this.applySort();
-        }
-    }
-
-    applySort = () => {
-        console.log('applySort: ' + props.sortBy);
-        this.setState({ moviesList: this.state.moviesList.sort(this.sortByProperty(props.sortBy)) });
-    }
-
-    sortByProperty = (property) => {
+    const sortByProperty = (property) => {
         const customSort = (firstElement, secondElement) => {
             if (!firstElement.hasOwnProperty(property) || !secondElement.hasOwnProperty(property)) {
                 return 0;
@@ -48,21 +46,23 @@ export default class MoviesList extends Component {
         return customSort;
     }
 
-    render() {
-        const movies = this.state.moviesList;
-        return (
-            <div className="movies-container" >
-                <p className="movies-results"><b>{movies.length}</b> movies found</p>
-                <div className="movies-list">
-                    {movies.length &&
-                        movies.map((movie, index) => (
-                            <MovieCard
-                                key={`${movie.title}-${index}`}
-                                movie={movie} />
-                        ))}
-                </div>
+    return (
+        <div className="movies-container" >
+            <p className="movies-results"><b>{data.length}</b> movies found</p>
+            <div className="movies-list">
+                {loading && (
+                    <Loader />
+                )}
+                {!loading &&
+                    data.map((movie, index) => (
+                        <MovieCard
+                            key={`${movie.title}-${index}`}
+                            movie={movie} />
+                    ))}
             </div>
-        );
-    }
-}
+        </div>
+    );
+};
+
+export default MoviesList;
 

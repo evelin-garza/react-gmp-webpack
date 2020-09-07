@@ -29,5 +29,6 @@ module.exports = {
             template: "./public/index.html",
             filename: "./index.html"
         })
-    ]
+    ],
+    entry: ['@babel/polyfill', './src/index.js']
 };

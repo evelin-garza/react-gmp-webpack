@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import Logo from "../Logo/Logo";
 import Searchbar from "../Searchbar/Searchbar";
 import AddMovieModal from "../AddMovieModal/AddMovieModal";
@@ -9,10 +9,12 @@ import "./Header.scss";
 const Header = (props) => {
     const [isAddMovieOpen, setIsAddMovieOpen] = useState(false);
 
-    const showOrHideAddMovie = (isOpen) => {
+
+
+    const showOrHideAddMovie = useCallback((isOpen) => {
         setIsAddMovieOpen(isOpen);
         setBodyStyleOverflow(isOpen);
-    }
+    }, [isAddMovieOpen]);
 
     const setBodyStyleOverflow = (isOpen) => {
         document.body.style.overflow = (isOpen) ? 'hidden' : 'unset';
