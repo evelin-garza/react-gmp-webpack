@@ -3,10 +3,9 @@
         "title": "Bohemian Rhapsody",
         "movieUrl": "https://upload.wikimedia.org/wikipedia/en/2/2e/Bohemian_Rhapsody_poster.png",
         "release_date": "2019-11-01",
-        "overview": "The story of the legendary British rock band Queen and lead singer Freddie Mercury",
+        "overview": "Bohemian Rhapsody is a 2018 biographical drama film about Freddie Mercury, the lead singer of the British rock band Queen. It was directed by Bryan Singer[a] from a screenplay by Anthony McCarten, and produced by Graham King and Queen manager Jim Beach. It stars Rami Malek as Mercury, with Lucy Boynton, Gwilym Lee, Ben Hardy, Joe Mazzello, Aidan Gillen, Tom Hollander, Allen Leech, and Mike Myers in supporting roles. Queen members Brian May and Roger Taylor served as consultants. A British-American venture, the film was produced by 20th Century Fox, Regency Enterprises, GK Films, and Queen Films, with Fox serving as distributor. The film follows the singer's life from the formation of the band up to their 1985 Live Aid performance at the original Wembley Stadium.",
         "runtime": "2h 13m",
         "rating": "4.8",
-        "description": "Description...",
         "genres": [{
             "id": 6,
             "name": "Drama"
@@ -16,10 +15,9 @@
         "title": "Inception",
         "movieUrl": "https://movieposters2.com/images/639314-b.jpg",
         "release_date": "2010-07-31",
-        "overview": "Inception is a 2010 science fiction action film",
+        "overview": "Inception is a 2010 science fiction action film written and directed by Christopher Nolan, who also produced the film with his wife, Emma Thomas. The film stars Leonardo DiCaprio as a professional thief who steals information by infiltrating the subconscious of his targets. He is offered a chance to have his criminal history erased as payment for the implantation of another person's idea into a target's subconscious. The ensemble cast includes Ken Watanabe, Joseph Gordon-Levitt, Marion Cotillard, Ellen Page, Tom Hardy, Dileep Rao, Cillian Murphy, Tom Berenger, and Michael Caine.",
         "runtime": "2h 42m",
         "rating": "4.2",
-        "description": "Description...",
         "genres": [{
                 "id": 3,
                 "name": "Action"
@@ -35,10 +33,9 @@
         "title": "Avengers: Infinity War",
         "movieUrl": "https://upload.wikimedia.org/wikipedia/en/4/4d/Avengers_Infinity_War_poster.jpg",
         "release_date": "2018-27-04",
-        "overview": "American superhero film based on the Marvel Comics",
+        "overview": "Avengers: Infinity War is a 2018 American superhero film based on the Marvel Comics superhero team the Avengers, produced by Marvel Studios and distributed by Walt Disney Studios Motion Pictures. It is the sequel to The Avengers (2012) and Avengers: Age of Ultron (2015), and the 19th film in the Marvel Cinematic Universe (MCU). The film was directed by Anthony and Joe Russo, written by Christopher Markus and Stephen McFeely. In the film, the Avengers and the Guardians of the Galaxy attempt to prevent Thanos from collecting the six all-powerful Infinity Stones as part of his quest to kill half of all life in the universe.",
         "runtime": "2h 40m",
         "rating": "4.7",
-        "description": "Description...",
         "genres": [{
                 "id": 3,
                 "name": "Action"
@@ -54,10 +51,9 @@
         "title": "Kill Bill: Vol 2",
         "movieUrl": "https://upload.wikimedia.org/wikipedia/en/c/c4/Kill_Bill_Volume_2.png",
         "release_date": "2004-16-04",
-        "overview": "American martial arts film",
+        "overview": "Kill Bill: Volume 2 is a 2004 American martial arts film written and directed by Quentin Tarantino. It stars Uma Thurman as the Bride, who continues her campaign of revenge against the Deadly Viper Assassination Squad (Lucy Liu, Michael Madsen, Daryl Hannah, and Vivica A. Fox) and their leader Bill (David Carradine), who tried to kill her and her unborn child.",
         "runtime": "2h 18m",
         "rating": "4.4",
-        "description": "Description...",
         "genres": [{
             "id": 3,
             "name": "Action"
@@ -68,10 +64,9 @@
         "title": "Crazy, Stupid, Love",
         "movieUrl": "https://upload.wikimedia.org/wikipedia/en/7/78/CrazyStupidLovePoster.jpg",
         "release_date": "2011-19-07",
-        "overview": "American romantic comedy film",
+        "overview": "Crazy, Stupid, Love is a 2011 American romantic comedy film directed by Glenn Ficarra and John Requa, written by Dan Fogelman, and starring Steve Carell, Ryan Gosling, Julianne Moore, Emma Stone, Marisa Tomei, and Kevin Bacon. It follows a recently divorced man who seeks to rediscover his manhood and is taught how to pick up women at bars.",
         "runtime": "2h 20m",
         "rating": "4.5",
-        "description": "Description...",
         "genres": [{
                 "id": 1,
                 "name": "Comedy"
@@ -91,7 +86,7 @@
         "title": "Harry Potter and the Deathly Hallows",
         "movieUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn_ZwSEfi2qnp0pcpDPzt9g6kiJzuoEGj73VHnZjdO7vHwidef",
         "release_date": "2010-19-11",
-        "overview": "Fantasy novel written by British author J. K. Rowling",
+        "overview": "Harry Potter and the Deathly Hallows – Part 1 is a 2010 fantasy film directed by David Yates and distributed by Warner Bros. Pictures. It is the first of two cinematic parts based on J. K. Rowling's 2007 novel of the same name and features an ensemble cast. The film, which is the seventh and penultimate instalment in the Harry Potter film series, was written by Steve Kloves and produced by David Heyman, David Barron, and Rowling.",
         "runtime": "2h 26m",
         "rating": "4.9",
         "description": "Description...",
