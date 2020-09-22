@@ -9,16 +9,21 @@
     .categories {
         display: flex;
 
-        span {
+        button {
             padding: 10px 0;
+            background: none;
+            border: none;
+            color: white;
+            text-transform: uppercase;
+            border-bottom: 2px solid transparent;
 
             &:not(:first-child) {
                 margin-left: 15px;
             }
 
-            &.active {
+            &.active,
+            &:hover {
                 border-bottom: 2px solid #F65261;
-                ;
             }
         }
     }
