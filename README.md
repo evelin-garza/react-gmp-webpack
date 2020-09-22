@@ -18,11 +18,3 @@
 
 -  Create build for production:
 `npm run build:prod`
-
-- _**useState**_: used in some of the components
-
-- _**useCallback**_: used in Header, MovieCard and useFetch custom hook
-
-- _**useEffect**_: used in MoviesList and useFetch custom hook
-
-- _**useFetch**_: custom hook to simulate api call to get data
