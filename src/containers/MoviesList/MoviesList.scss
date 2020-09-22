@@ -16,4 +16,22 @@
         flex-wrap: wrap;
         justify-content: space-between;
     }
+
+    .message-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 10px;
+        background: #F65261;
+        margin-top: 10px;
+        color: white;
+        font-weight: 300;
+
+        .close {
+            cursor: pointer;
+            background: no-repeat;
+            border: none;
+            color: white;
+            padding: 0;
+        }
+    }
 }
