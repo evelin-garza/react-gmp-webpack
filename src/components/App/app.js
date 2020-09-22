@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Header from "../Header/Header";
 import MoviesList from "../../containers/MoviesList/MoviesList";
 import Footer from "../../components/Footer/Footer";
@@ -7,26 +7,15 @@ import MovieFilters from "../../components/MovieFilters/MovieFilters";
 import ErrorBoundary from "../../components/ErrorBoundary/ErrorBoundary";
 
 import "./App.scss";
-import MovieContext from "../../Hooks/Context/MovieContext";
 
 const App = () => {
-    const [sortBy, setSortBy] = useState('release_date');
-    const [selectedMovie, setSelectedMovie] = useState(null);
-
     return (
         <>
-            <Header selectedMovie={selectedMovie} setSelectedMovie={setSelectedMovie} />
+            <Header />
             <div className="content">
-                <MovieFilters
-                    sortBy={sortBy}
-                    setSortBy={setSortBy} />
+                <MovieFilters />
                 <ErrorBoundary hasErrors={false}>
-                    <MovieContext.Provider value={{
-                        setSelectedMovie
-                    }}>
-                        <MoviesList
-                            sortBy={sortBy} />
-                    </MovieContext.Provider>
+                    <MoviesList />
                 </ErrorBoundary>
                 <Footer><Logo /></Footer>
             </div>
