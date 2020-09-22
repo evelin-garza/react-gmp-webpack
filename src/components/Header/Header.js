@@ -1,16 +1,16 @@
 import React, { useState, useCallback } from "react";
+import { connect } from 'react-redux';
+
 import Logo from "../Logo/Logo";
 import Searchbar from "../Searchbar/Searchbar";
 import AddMovieModal from "../AddMovieModal/AddMovieModal";
 import MovieDetails from "../MovieDetails/MovieDetails";
-import PropTypes from "prop-types";
+import * as movieActions from "../../actions/movieActions";
 
 import "./Header.scss";
 
-const Header = (props) => {
+const Header = ({ selectedMovie, onCloseMovieDetails }) => {
     const [isAddMovieOpen, setIsAddMovieOpen] = useState(false);
-
-
 
     const showOrHideAddMovie = useCallback((isOpen) => {
         setIsAddMovieOpen(isOpen);
@@ -22,12 +22,13 @@ const Header = (props) => {
     }
 
     const openAddMovie = () => showOrHideAddMovie(true);
-    const closeMovieDetails = () => props.setSelectedMovie(null);
+    const closeAddMovie = () => showOrHideAddMovie(false);
+    const closeMovieDetails = () => onCloseMovieDetails();
 
     return (
         <header className="header">
-            {props.selectedMovie
-                ? <MovieDetails selectedMovie={props.selectedMovie} onClose={closeMovieDetails} />
+            {selectedMovie && Object.keys(selectedMovie).length > 0
+                ? <MovieDetails selectedMovie={selectedMovie} onClose={closeMovieDetails} />
                 : <>
                     <div className="container">
                         <div className="top-bar">
@@ -40,7 +41,7 @@ const Header = (props) => {
                         </div>
                     </div>
                     <AddMovieModal
-                        onClose={showOrHideAddMovie}
+                        onClose={closeAddMovie}
                         show={isAddMovieOpen} />
                 </>
             }
@@ -48,9 +49,16 @@ const Header = (props) => {
     );
 };
 
-Header.propTypes = {
-    setSelectedMovie: PropTypes.func,
-    selectedMovie: PropTypes.object
+const mapStateToProps = (state) => {
+    return {
+        selectedMovie: state.selectedMovie
+    };
 }
 
-export default Header;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onCloseMovieDetails: () => dispatch(movieActions.clearSelectedMovie())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
