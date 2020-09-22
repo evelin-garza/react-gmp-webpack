@@ -5,8 +5,7 @@ import Logo from "../Logo/Logo";
 
 const MovieDetails = ({ selectedMovie, onClose }) => {
     const getMovieYear = (movieReleaseDate) => {
-        const date = movieReleaseDate.split('-');
-        return date[0];
+        return movieReleaseDate.slice(0, 4);
     };
 
     return (
@@ -19,16 +18,16 @@ const MovieDetails = ({ selectedMovie, onClose }) => {
                     </span>
                 </div>
                 <div className="movie-content">
-                    <img alt={selectedMovie.title} src={selectedMovie.movieUrl} />
+                    <img alt={selectedMovie.title} src={selectedMovie.poster_path} />
                     <div className="info">
                         <div className="row">
                             <span className="title">{selectedMovie.title}</span>
-                            <span className="rating">{selectedMovie.rating}</span>
+                            <span className="rating">{selectedMovie.vote_average}</span>
                         </div>
 
                         <div className="row">
                             <span className="release-date">{getMovieYear(selectedMovie.release_date)}</span>
-                            <span className="duration">{selectedMovie.runtime}</span>
+                            <span className="duration">{selectedMovie.runtime} min</span>
                         </div>
 
                         <p className="description">
