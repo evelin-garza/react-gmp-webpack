@@ -1,17 +1,19 @@
-import React, { useState, useContext, useCallback } from "react";
+import React, { useState, useCallback } from "react";
+import { connect } from 'react-redux';
+import PropTypes from "prop-types";
+
 import Popup from "../Shared/Popup/Popup";
 import EditMovieModal from "../../components/EditMovieModal/EditMovieModal";
 import DeleteMovieModal from "../../components/DeleteMovieModal/DeleteMovieModal";
+import * as movieActions from "../../actions/movieActions";
 
 import "./MovieCard.scss";
-import MovieContext from "../../Hooks/Context/MovieContext";
-import PropTypes from "prop-types";
+
 
 const MovieCard = (props) => {
     const [isEditMovieOpen, setIsEditMovieOpen] = useState(false);
     const [isDeleteMovieOpen, setIsDeleteMovieOpen] = useState(false);
     const [isPopupOpen, setIsPopupOpen] = useState(false);
-    const { setSelectedMovie } = useContext(MovieContext);
 
     const showOrHideEditMovie = useCallback((isOpen) => {
         setIsEditMovieOpen(isOpen);
@@ -33,8 +35,16 @@ const MovieCard = (props) => {
         showOrHideEditMovie(true);
     }
 
+    const closeEditMovieModal = () => {
+        showOrHideEditMovie(false);
+    }
+
     const openDeleteMovieModal = () => {
         showOrHideDeleteMovie(true);
+    }
+
+    const closeDeleteMovieModal = () => {
+        showOrHideDeleteMovie(false);
     }
 
     const showOrHideMovieOptions = () => {
@@ -42,7 +52,7 @@ const MovieCard = (props) => {
     }
 
     const getMovieGenre = (movieGenres) => {
-        return movieGenres.map(genre => genre.name).join(", ");
+        return movieGenres.join(", ");
     }
 
     const getMovieYear = (movieReleaseDate) => {
@@ -50,17 +60,17 @@ const MovieCard = (props) => {
         return date[0];
     }
 
-    const showMovieDetails = () => {
-        setSelectedMovie(props.movie);
+    const showMovieDetails = (movieId) => {
+        props.getMovieById(movieId);
         window.scrollTo(0, 0);
     }
 
-    const { title, movieUrl, release_date, genres } = props.movie;
+    const { id, title, poster_path, release_date, genres } = props.movie;
 
     return (
         <div className="movie-card">
             <div className="movie-image">
-                <img src={movieUrl} alt={title} onClick={showMovieDetails} />
+                <img src={poster_path} alt={title} onClick={() => showMovieDetails(id)} />
             </div>
             <div className="movie-options">
                 <span className="movie-options-icon" onClick={showOrHideMovieOptions}>
@@ -82,12 +92,13 @@ const MovieCard = (props) => {
             </div>
             <>
                 <EditMovieModal
-                    onClose={showOrHideEditMovie}
+                    onClose={closeEditMovieModal}
                     show={isEditMovieOpen}
                     currentMovie={props.movie} />
                 <DeleteMovieModal
-                    onClose={showOrHideDeleteMovie}
-                    show={isDeleteMovieOpen} />
+                    onClose={closeDeleteMovieModal}
+                    show={isDeleteMovieOpen}
+                    movie={props.movie} />
             </>
         </div>
     );
@@ -97,12 +108,18 @@ MovieCard.propTypes = {
     movie: PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
-        movieUrl: PropTypes.string.isRequired,
+        poster_path: PropTypes.string.isRequired,
         release_date: PropTypes.string.isRequired,
         overview: PropTypes.string.isRequired,
-        runtime: PropTypes.string.isRequired,
+        runtime: PropTypes.number,
         genres: PropTypes.array.isRequired,
     }).isRequired
 };
 
-export default MovieCard;
+const mapDispatcherToProps = (dispatch) => {
+    return {
+        getMovieById: (movieId) => dispatch(movieActions.findMovieById(movieId))
+    }
+}
+
+export default connect(null, mapDispatcherToProps)(MovieCard);
