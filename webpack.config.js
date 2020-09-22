@@ -4,7 +4,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(js|jsx)$/,
+                test: /\.js|\.jsx$/,
                 exclude: /node_modules/,
                 use: {
                     loader: "babel-loader"
@@ -30,5 +30,6 @@ module.exports = {
             filename: "./index.html"
         })
     ],
-    entry: ['@babel/polyfill', './src/index.js']
+    entry: ['@babel/polyfill', './src/index.js'],
+    target: 'node'
 };
