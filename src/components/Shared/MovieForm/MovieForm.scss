@@ -9,7 +9,8 @@
         margin-bottom: 5px;
     }
 
-    input {
+    input,
+    textarea {
         background: #555555;
         border-radius: 4px;
         height: 45px;
@@ -28,6 +29,12 @@
         &.searchBox {
             height: auto;
         }
+    }
+
+    textarea {
+        height: auto;
+        resize: none;
+        padding: 10px 20px;
     }
 
     input[type="date"] {
@@ -59,6 +66,36 @@
             font-family: 'FontAwesome';
             color: #f65261;
             pointer-events: none;
+        }
+    }
+}
+
+.form-actions {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+
+    .btn {
+        font-size: 18px;
+        font-weight: 300;
+        padding: 10px 30px;
+        border: 0;
+        border-radius: 4px;
+        background: transparent;
+        cursor: pointer;
+
+        &:last-child {
+            margin-left: 20px;
+        }
+
+        &-red-outline {
+            border: 1px solid #F65261;
+            color: #F65261;
+        }
+
+        &-filled-red {
+            background: #F65261;
+            color: white;
         }
     }
 }

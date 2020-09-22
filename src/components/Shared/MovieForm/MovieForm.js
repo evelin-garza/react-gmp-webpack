@@ -1,18 +1,22 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Multiselect } from "multiselect-react-dropdown";
+import { connect } from 'react-redux';
 
 import "./MovieForm.scss";
+import * as movieActions from "../../../actions/movieActions";
 
 const MovieForm = (props) => {
     const genresArray = [
-        { id: 1, name: "Comedy" },
-        { id: 2, name: "Adventure" },
-        { id: 3, name: "Action" },
-        { id: 4, name: "Romance" },
-        { id: 5, name: "Science Fiction" },
-        { id: 6, name: "Drama" },
-        { id: 7, name: "Fantasy" }
+        "Romance",
+        "Animation",
+        "Adventure",
+        "Family",
+        "Comedy",
+        "Fantasy",
+        "Science Fiction",
+        "Action",
+        "Drama"
     ];
 
     const styles = {
@@ -24,75 +28,125 @@ const MovieForm = (props) => {
 
     const [genreOptions] = useState(genresArray);
     const [multiselectStyles] = useState(styles);
-    const { id, title, movieUrl, genres, release_date, overview, runtime } = props.movie;
+    const [movieDataForm, setMovieDataForm] = useState({ ...props.movie });
+
+    const multiselectRef = React.createRef();
+
+    const onInputChange = (event) => {
+        const target = event.target;
+        const name = target.name;
+        const value = (name === 'runtime') ? parseInt(target.value) : target.value;
+
+        var movieDataFormCopy = movieDataForm;
+        movieDataFormCopy[name] = value;
+        setMovieDataForm(movieDataFormCopy);
+    }
+
+    const onSelectGenre = (values) => {
+        var movieDataFormCopy = movieDataForm;
+        movieDataFormCopy['genres'] = values;
+        setMovieDataForm(movieDataFormCopy);
+    }
+
+    const resetGenres = () => {
+        multiselectRef.current.resetSelectedValues();
+    }
+
+    const onSubmit = (event) => {
+        event.preventDefault();
+        if (props.mode === 'add') {
+            props.addMovie(movieDataForm);
+        } else {
+            props.editMovie(movieDataForm);
+        }
+        props.onClose();
+    }
 
     return (
-        <form>
-            {id && (
+        <form onSubmit={onSubmit}>
+            {movieDataForm.id && (
                 <div className="form-control">
                     <label>MOVIE ID</label>
-                    <input type="text" className="movie-id" value={id} disabled />
+                    <input type="text" className="movie-id" value={movieDataForm.id} disabled />
                 </div>
             )
             }
             <div className="form-control">
                 <label>TITLE</label>
-                <input type="text" placeholder="Movie Title" value={title} />
+                <input name="title" type="text" placeholder="Movie Title" defaultValue={movieDataForm.title} onChange={onInputChange} required />
             </div>
             <div className="form-control">
                 <label>RELEASE DATE</label>
-                <input type="date" placeholder="Select Date" value={release_date} />
+                <input name="release_date" type="date" placeholder="Select Date" defaultValue={movieDataForm.release_date} onChange={onInputChange} required />
             </div>
             <div className="form-control">
                 <label>MOVIE URL</label>
-                <input type="text" placeholder="Movie Url" value={movieUrl} />
+                <input name="poster_path" type="text" placeholder="Movie Url" defaultValue={movieDataForm.poster_path} onChange={onInputChange} required />
             </div>
             <div className="form-control">
                 <label>GENRE</label>
                 <div className="movie-genre-container">
                     <Multiselect
                         options={genreOptions}
-                        displayValue="name"
-                        selectedValues={genres}
+                        isObject={false}
+                        selectedValues={movieDataForm.genres}
                         placeholder="Select Genre"
                         style={multiselectStyles}
                         closeIcon="cancel"
+                        onSelect={onSelectGenre}
+                        onRemove={onSelectGenre}
+                        ref={multiselectRef}
                     />
                 </div>
             </div>
             <div className="form-control">
                 <label>OVERVIEW</label>
-                <input type="text" placeholder="Movie Overview" value={overview} />
+                <textarea name="overview" placeholder="Movie Overview" defaultValue={movieDataForm.overview} onChange={onInputChange} rows="2" required></textarea>
             </div>
             <div className="form-control">
                 <label>RUNTIME</label>
-                <input type="text" placeholder="Movie Runtime" value={runtime} />
+                <input name="runtime" type="number" placeholder="Movie Runtime" defaultValue={movieDataForm.runtime} onChange={onInputChange} required />
+            </div>
+            <div className="form-actions">
+                <input type="reset" className="btn btn-red-outline" value="RESET" onClick={resetGenres} />
+                <input type="submit" className="btn btn-filled-red" value="SUBMIT" />
             </div>
         </form>
     );
 };
 
-export default MovieForm;
-
 MovieForm.propTypes = {
     movie: PropTypes.shape({
         id: PropTypes.number,
         title: PropTypes.string,
-        movieUrl: PropTypes.string,
+        poster_path: PropTypes.string,
         release_date: PropTypes.string,
         overview: PropTypes.string,
-        runtime: PropTypes.string,
+        runtime: PropTypes.number,
         genres: PropTypes.array,
-    })
+        vote_average: PropTypes.number
+    }),
+    mode: PropTypes.string,
+    onClose: PropTypes.func
 };
 
 MovieForm.defaultProps = {
     movie: {
         title: "",
-        movieUrl: "",
+        poster_path: "",
         release_date: "",
         overview: "",
-        runtime: "",
-        genres: []
+        runtime: 0,
+        genres: [],
+        vote_average: 0
     }
 };
+
+const mapDispatcherToProps = (dispatch) => {
+    return {
+        addMovie: (movie) => dispatch(movieActions.addMovie(movie)),
+        editMovie: (movie) => dispatch(movieActions.editMovie(movie))
+    }
+}
+
+export default connect(null, mapDispatcherToProps)(MovieForm);
