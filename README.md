@@ -1,4 +1,4 @@
-# React Global Mentoring Program (Task 5: Hooks)
+# React Global Mentoring Program (Task 6: Redux)
 
 **Getting Started**
 
