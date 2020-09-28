@@ -1,12 +1,56 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import { Multiselect } from "multiselect-react-dropdown";
 import { connect } from 'react-redux';
+import { Formik, useField, Form } from 'formik';
 
 import "./MovieForm.scss";
 import * as movieActions from "../../../actions/movieActions";
 
+const CustomTextInput = ({ label, ...props }) => {
+    const [field, meta] = useField(props);
+
+    return (
+        <div className="form-control">
+            <label htmlFor={props.id || props.name}>{label}</label>
+            <input {...field}{...props} className={(meta.touched && meta.error) ? 'error' : ''} />
+            {meta.touched && meta.error ? (
+                <div className="error">{meta.error}</div>
+            ) : null}
+        </div>
+    )
+};
+
+const CustomSelect = ({ label, ...props }) => {
+    const [field, meta] = useField(props);
+
+    return (
+        <div className="form-control">
+            <label htmlFor={props.id || props.name}>{label}</label>
+            <select {...field}{...props} className={(meta.touched && meta.error) ? 'error' : ''} />
+            {meta.touched && meta.error ? (
+                <div className="error">{meta.error}</div>
+            ) : null}
+        </div>
+    )
+};
+
+const CustomTextarea = ({ label, ...props }) => {
+    const [field, meta] = useField(props);
+
+    return (
+        <div className="form-control">
+            <label htmlFor={props.id || props.name}>{label}</label>
+            <textarea {...field}{...props} className={(meta.touched && meta.error) ? 'error' : ''} />
+            {meta.touched && meta.error ? (
+                <div className="error">{meta.error}</div>
+            ) : null}
+        </div>
+    )
+};
+
 const MovieForm = (props) => {
+    const { initialValues, movie, validationSchema, mode, addMovie, editMovie, onClose } = props;
+
     const genresArray = [
         "Romance",
         "Animation",
@@ -19,99 +63,42 @@ const MovieForm = (props) => {
         "Drama"
     ];
 
-    const styles = {
-        chips: { background: "#f65261" },
-        searchBox: { border: "none", background: "#555555", height: "45px", boxSizing: "border-box" },
-        inputField: { background: "none" },
-        option: { color: "#424242" }
-    };
-
-    const [genreOptions] = useState(genresArray);
-    const [multiselectStyles] = useState(styles);
-    const [movieDataForm, setMovieDataForm] = useState({ ...props.movie });
-
-    const multiselectRef = React.createRef();
-
-    const onInputChange = (event) => {
-        const target = event.target;
-        const name = target.name;
-        const value = (name === 'runtime') ? parseInt(target.value) : target.value;
-
-        var movieDataFormCopy = movieDataForm;
-        movieDataFormCopy[name] = value;
-        setMovieDataForm(movieDataFormCopy);
-    }
-
-    const onSelectGenre = (values) => {
-        var movieDataFormCopy = movieDataForm;
-        movieDataFormCopy['genres'] = values;
-        setMovieDataForm(movieDataFormCopy);
-    }
-
-    const resetGenres = () => {
-        multiselectRef.current.resetSelectedValues();
-    }
-
-    const onSubmit = (event) => {
-        event.preventDefault();
-        if (props.mode === 'add') {
-            props.addMovie(movieDataForm);
-        } else {
-            props.editMovie(movieDataForm);
-        }
-        props.onClose();
-    }
-
     return (
-        <form onSubmit={onSubmit}>
-            {movieDataForm.id && (
-                <div className="form-control">
-                    <label>MOVIE ID</label>
-                    <input type="text" className="movie-id" value={movieDataForm.id} disabled />
-                </div>
-            )
-            }
-            <div className="form-control">
-                <label>TITLE</label>
-                <input name="title" type="text" placeholder="Movie Title" defaultValue={movieDataForm.title} onChange={onInputChange} required />
-            </div>
-            <div className="form-control">
-                <label>RELEASE DATE</label>
-                <input name="release_date" type="date" placeholder="Select Date" defaultValue={movieDataForm.release_date} onChange={onInputChange} required />
-            </div>
-            <div className="form-control">
-                <label>MOVIE URL</label>
-                <input name="poster_path" type="text" placeholder="Movie Url" defaultValue={movieDataForm.poster_path} onChange={onInputChange} required />
-            </div>
-            <div className="form-control">
-                <label>GENRE</label>
-                <div className="movie-genre-container">
-                    <Multiselect
-                        options={genreOptions}
-                        isObject={false}
-                        selectedValues={movieDataForm.genres}
-                        placeholder="Select Genre"
-                        style={multiselectStyles}
-                        closeIcon="cancel"
-                        onSelect={onSelectGenre}
-                        onRemove={onSelectGenre}
-                        ref={multiselectRef}
-                    />
-                </div>
-            </div>
-            <div className="form-control">
-                <label>OVERVIEW</label>
-                <textarea name="overview" placeholder="Movie Overview" defaultValue={movieDataForm.overview} onChange={onInputChange} rows="2" required></textarea>
-            </div>
-            <div className="form-control">
-                <label>RUNTIME</label>
-                <input name="runtime" type="number" placeholder="Movie Runtime" defaultValue={movieDataForm.runtime} onChange={onInputChange} required />
-            </div>
-            <div className="form-actions">
-                <input type="reset" className="btn btn-red-outline" value="RESET" onClick={resetGenres} />
-                <input type="submit" className="btn btn-filled-red" value="SUBMIT" />
-            </div>
-        </form>
+        <Formik
+            initialValues={initialValues || movie}
+            validationSchema={validationSchema}
+            onSubmit={(values, { resetForm }) => {
+                if (mode === 'add') {
+                    addMovie(values);
+                } else {
+                    editMovie(values);
+                }
+                onClose();
+            }}
+        >
+            {props => (
+                <Form>
+                    {movie && movie.id && (
+                        <CustomTextInput label="Id" name="id" type="text" disabled />
+                    )}
+                    <CustomTextInput label="Title" name="title" type="text" placeholder="Movie Title" />
+                    <CustomTextInput label="Release Date" name="release_date" type="date" placeholder="Select Date" />
+                    <CustomTextInput label="Movie URL" name="poster_path" type="text" placeholder="Movie Url" />
+                    <CustomSelect label="Genre" name="genres" multiple>
+                        {genresArray.map((genre, index) => (
+                            <option key={index} value={genre}>{genre}</option>
+                        ))}
+                    </CustomSelect>
+                    <CustomTextarea label="Overview" name="overview" placeholder="Movie Overview" rows="1" />
+                    <CustomTextInput label="Runtime" name="runtime" type="number" placeholder="Movie Runtime" />
+                    <div className="form-actions">
+                        <input type="button" className="btn btn-red-outline" value="RESET" onClick={props.resetForm} />
+                        <input type="submit" className="btn btn-filled-red" value="SUBMIT" disabled={props.isSubmiting} />
+                    </div>
+                </Form>
+            )}
+
+        </Formik>
     );
 };
 
