@@ -70,7 +70,7 @@ const MovieCard = (props) => {
     return (
         <div className="movie-card">
             <div className="movie-image">
-                <img src={poster_path} alt={title} onClick={() => showMovieDetails(id)} />
+                <img src={poster_path} alt={title} onClick={() => showMovieDetails(id)} onError={(e) => { e.target.onerror = null; e.target.src = "https://motivatevalmorgan.com/wp-content/uploads/2016/06/default-movie-1-3.jpg" }} />
             </div>
             <div className="movie-options">
                 <span className="movie-options-icon" onClick={showOrHideMovieOptions}>
