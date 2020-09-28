@@ -1,4 +1,4 @@
-# React Global Mentoring Program (Task 6: Redux)
+# React Global Mentoring Program (Task 7: Formik)
 
 **Getting Started**
 
