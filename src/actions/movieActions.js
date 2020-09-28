@@ -1,5 +1,5 @@
 import MovieApi from '../api/movieApi';
-import * as types from './actionTypes';
+import { MoviesActions } from './actionTypes';
 
 export const getMovies = (msg = '', sortBy = 'release_date', genre = 'all') => {
     return async (dispatch) => {
@@ -84,21 +84,21 @@ export const deleteMovie = (id) => {
 }
 
 export const moviesList = (movies, msg = '') => {
-    return { type: types.GET_MOVIES, movies, msg };
+    return { type: MoviesActions.LIST, movies, msg };
 }
 
 export const filterMovies = (movies, genre) => {
-    return { type: types.GET_MOVIES_BY_GENRE, movies, genre };
+    return { type: MoviesActions.GET_BY_GENRE, movies, genre };
 }
 
 export const getMovieById = (movie) => {
-    return { type: types.GET_MOVIE_BY_ID, movie };
+    return { type: MoviesActions.GET_BY_ID, movie };
 }
 
 export const clearSelectedMovie = () => {
-    return { type: types.CLEAR_SELECTED_MOVIE };
+    return { type: MoviesActions.CLEAR_SELECTED };
 }
 
 export const clearMessage = () => {
-    return { type: types.CLEAR_MESSAGE };
+    return { type: MoviesActions.CLEAR_MESSAGE };
 }
