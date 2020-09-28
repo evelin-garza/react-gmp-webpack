@@ -7,10 +7,12 @@
         font-size: 18px;
         color: #F65261;
         margin-bottom: 5px;
+        text-transform: uppercase;
     }
 
     input,
-    textarea {
+    textarea,
+    select {
         background: #555555;
         border-radius: 4px;
         height: 45px;
@@ -29,12 +31,26 @@
         &.searchBox {
             height: auto;
         }
+
+        &.error {
+            border: 1px solid #F65261;
+        }
     }
 
     textarea {
         height: auto;
         resize: none;
         padding: 10px 20px;
+    }
+
+    select {
+        height: auto;
+        padding: 0;
+
+        option {
+            font-weight: 100;
+            padding: 0 20px;
+        }
     }
 
     input[type="date"] {
