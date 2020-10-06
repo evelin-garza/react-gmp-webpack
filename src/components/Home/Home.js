@@ -6,9 +6,11 @@ import MoviesList from "../../containers/MoviesList/MoviesList";
 import Footer from "../Footer/Footer";
 import Logo from "../Logo/Logo";
 
+import "./Home.scss";
+
 const Home = () => {
     return (
-        <>
+        <div className="home">
             <Header />
             <div className="content">
                 <MovieFilters />
@@ -17,7 +19,7 @@ const Home = () => {
                 </ErrorBoundary>
                 <Footer><Logo /></Footer>
             </div>
-        </>
+        </div>
     );
 }
 
