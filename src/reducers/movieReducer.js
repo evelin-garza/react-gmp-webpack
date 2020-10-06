@@ -4,9 +4,7 @@ import initialState from './initialState';
 const movieReducer = (state = initialState, action) => {
     switch (action.type) {
         case MoviesActions.LIST:
-            return { ...state, movies: action.movies, message: action.msg };
-        case MoviesActions.GET_BY_GENRE:
-            return { ...state, movies: action.movies, genreFilter: action.genre };
+            return { ...state, movies: action.movies, search: action.search, sortBy: action.sortBy, genreFilter: action.genre, message: action.msg };
         case MoviesActions.GET_BY_ID:
             return { ...state, selectedMovie: action.movie };
         case MoviesActions.CREATE:

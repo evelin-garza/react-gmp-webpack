@@ -1,20 +1,10 @@
 import MovieApi from '../api/movieApi';
 import { MoviesActions } from './actionTypes';
 
-export const getMovies = (msg = '', sortBy = 'release_date', genre = 'all') => {
+export const getMovies = (search, sortBy, genre, msg = '') => {
     return async (dispatch) => {
-        return MovieApi.getMovies(sortBy, genre).then(movies => {
-            dispatch(moviesList(movies, msg));
-        }).catch(error => {
-            throw (error);
-        });
-    };
-}
-
-export const getMoviesByGenre = (genre = '') => {
-    return async (dispatch) => {
-        return MovieApi.getMoviesByGenre(genre).then(movies => {
-            dispatch(filterMovies(movies, genre));
+        return MovieApi.getMovies(search, sortBy, genre).then(movies => {
+            dispatch(moviesList(movies, search, sortBy, genre, msg));
         }).catch(error => {
             throw (error);
         });
@@ -41,9 +31,11 @@ export const addMovie = (movie) => {
         }
     };
 
-    return async (dispatch) => {
+    return async (dispatch, getState) => {
+        const { search, sortBy, genre } = getState();
+
         return MovieApi.addMovie(options).then(msg => {
-            dispatch(getMovies(msg));
+            dispatch(getMovies(search, sortBy, genre, msg));
         }).catch(error => {
             throw (error);
         });
@@ -60,9 +52,11 @@ export const editMovie = (movie) => {
         }
     };
 
-    return async (dispatch) => {
+    return async (dispatch, getState) => {
+        const { search, sortBy, genre } = getState();
+
         return MovieApi.editMovie(options).then(msg => {
-            dispatch(getMovies(msg));
+            dispatch(getMovies(search, sortBy, genre, msg));
         }).catch(error => {
             throw (error);
         });
@@ -74,21 +68,19 @@ export const deleteMovie = (id) => {
         method: 'DELETE'
     };
 
-    return async (dispatch) => {
+    return async (dispatch, getState) => {
+        const { search, sortBy, genre } = getState();
+
         return MovieApi.deleteMovie(id, options).then(msg => {
-            dispatch(getMovies(msg));
+            dispatch(getMovies(search, sortBy, genre, msg));
         }).catch(error => {
             throw (error);
         });
     };
 }
 
-export const moviesList = (movies, msg = '') => {
-    return { type: MoviesActions.LIST, movies, msg };
-}
-
-export const filterMovies = (movies, genre) => {
-    return { type: MoviesActions.GET_BY_GENRE, movies, genre };
+export const moviesList = (movies, search, sortBy, genre, msg) => {
+    return { type: MoviesActions.LIST, movies, search, sortBy, genre, msg };
 }
 
 export const getMovieById = (movie) => {

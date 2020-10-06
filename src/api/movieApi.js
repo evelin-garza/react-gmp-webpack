@@ -1,17 +1,14 @@
 import { Endpoints } from "../constants/endpoints";
 
 export default class MovieApi {
-    static async getMovies(sortBy = 'release_date', genre = 'all') {
-        const filterQueryParams = (genre !== 'all') ? `searchBy=genres&search=${genre}` : '';
-        const moviesUrl = `${Endpoints.serverUrl}${Endpoints.movies}?sortBy=${sortBy}&sortOrder=desc${filterQueryParams}`;
-        const response = await fetch(moviesUrl);
-        const json = await response.json();
-        return json.data;
-    }
-
-    static async getMoviesByGenre(genre = 'all') {
-        const filterQueryParams = (genre !== 'all') ? `searchBy=genres&search=${genre}` : '';
-        const moviesUrl = `${Endpoints.serverUrl}${Endpoints.movies}?${filterQueryParams}`;
+    static async getMovies(search, sortBy, filter, sortOrder = 'desc') {
+        let queryParams = `?search=${search}&sortBy=${sortBy}&sortOrder=${sortOrder}`;
+        if (filter && filter !== 'all') {
+            queryParams += `&searchBy=genres&filter=${filter}`;
+        } else {
+            queryParams += `&searchBy=title`;
+        }
+        const moviesUrl = `${Endpoints.serverUrl}${Endpoints.movies}${queryParams}`;
         const response = await fetch(moviesUrl);
         const json = await response.json();
         return json.data;

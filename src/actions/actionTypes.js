@@ -1,6 +1,5 @@
 export const MoviesActions = {
     LIST: 'movies/list',
-    GET_BY_GENRE: 'movies/getByGenre',
     GET_BY_ID: 'movies/getById',
     CREATE: 'movies/create',
     UPDATE: 'movies/update',
