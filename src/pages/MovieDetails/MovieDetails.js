@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { useParams, useHistory } from "react-router";
 
 import "./MovieDetails.scss";
-import Logo from "../Logo/Logo";
+import Logo from "../../components/Logo/Logo";
 import * as movieActions from "../../actions/movieActions";
-import Footer from "../Footer/Footer";
-import Loader from "../Shared/Loader/Loader";
+import Footer from "../../components/Footer/Footer";
+import Loader from "../../components/Shared/Loader/Loader";
 
 const MovieDetails = ({ getMovieById, selectedMovie, onCloseMovieDetails }) => {
     const history = useHistory();

@@ -1,8 +1,8 @@
 import React from "react";
 
 import "./NotFound.scss";
-import Logo from "../Logo/Logo";
-import Footer from "../Footer/Footer";
+import Logo from "../../components/Logo/Logo";
+import Footer from "../../components/Footer/Footer";
 import { Link } from "react-router-dom";
 
 const NotFound = () => {

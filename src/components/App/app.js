@@ -6,9 +6,9 @@ import {
 } from "react-router-dom";
 
 import "./App.scss";
-import Home from "../Home/Home";
-import NotFound from "../NotFound/NotFound";
-import MovieDetails from "../MovieDetails/MovieDetails";
+import Home from "../../pages/Home/Home";
+import MovieDetails from "../../pages/MovieDetails/MovieDetails";
+import NotFound from "../../pages/NotFound/NotFound";
 
 const App = () => {
     return (
