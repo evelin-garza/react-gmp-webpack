@@ -1,26 +1,45 @@
 .movie-details-container {
     background: rgba(0, 0, 0, .92);
     color: #FFF;
-    padding: 20px 0;
+    height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 
     .topbar {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 20px;
+        background: #424242;
+        padding: 20px 0;
 
-        .search-icon {
-            font-size: 20px;
-            color: #F65261;
-            cursor: pointer;
+        .container {
+            display: flex;
+            justify-content: space-between;
 
-            .fa-search {
-                transform: rotate(90deg);
+            .search-icon {
+                font-size: 20px;
+                color: #F65261;
+                cursor: pointer;
+
+                .fa-search {
+                    transform: rotate(90deg);
+                }
             }
+        }
+    }
+
+    .container {
+        flex-grow: 1;
+        display: flex;
+        text-align: center;
+
+        .loader-container {
+            margin: auto;
         }
     }
 
     .movie-content {
         display: flex;
+        margin-top: 5%;
+        text-align: left;
 
         img {
             height: 350px;
