@@ -18,6 +18,13 @@ const Searchbar = (props) => {
         setSearchQuery(event.target.value);
     };
 
+    const handleOnKeyDown = (event) => {
+        const value = event.target.value;
+        if (value.trim().length > 0 && event.key == 'Enter') {
+            search();
+        }
+    };
+
     const search = () => {
         if (location.pathname !== 'search') {
             history.push('/search?search=' + searchQuery);
@@ -35,7 +42,12 @@ const Searchbar = (props) => {
 
     return (
         <div className="searchbar">
-            <input type="text" defaultValue={searchQuery} onChange={handleOnChange} className="search-input" placeholder="What do you want to watch?" />
+            <input type="text"
+                defaultValue={searchQuery}
+                onKeyDown={handleOnKeyDown}
+                onChange={handleOnChange}
+                className="search-input"
+                placeholder="What do you want to watch?" />
             <button className="btn-search" onClick={search} disabled={!searchQuery}>SEARCH</button>
         </div>
     );
