@@ -8,12 +8,14 @@ import DeleteMovieModal from "../../components/DeleteMovieModal/DeleteMovieModal
 import * as movieActions from "../../actions/movieActions";
 
 import "./MovieCard.scss";
-
+import { useHistory } from "react-router";
 
 const MovieCard = (props) => {
     const [isEditMovieOpen, setIsEditMovieOpen] = useState(false);
     const [isDeleteMovieOpen, setIsDeleteMovieOpen] = useState(false);
     const [isPopupOpen, setIsPopupOpen] = useState(false);
+    const history = useHistory();
+    const { id, title, poster_path, release_date, genres } = props.movie;
 
     const showOrHideEditMovie = useCallback((isOpen) => {
         setIsEditMovieOpen(isOpen);
@@ -60,17 +62,15 @@ const MovieCard = (props) => {
         return date[0];
     }
 
-    const showMovieDetails = (movieId) => {
-        props.getMovieById(movieId);
-        window.scrollTo(0, 0);
+    const goToMovieDetails = () => {
+        history.push('/film/' + id);
     }
 
-    const { id, title, poster_path, release_date, genres } = props.movie;
-
     return (
+
         <div className="movie-card">
             <div className="movie-image">
-                <img src={poster_path} alt={title} onClick={() => showMovieDetails(id)} onError={(e) => { e.target.onerror = null; e.target.src = "https://motivatevalmorgan.com/wp-content/uploads/2016/06/default-movie-1-3.jpg" }} />
+                <img src={poster_path} alt={title} onClick={goToMovieDetails} onError={(e) => { e.target.onerror = null; e.target.src = "https://motivatevalmorgan.com/wp-content/uploads/2016/06/default-movie-1-3.jpg" }} />
             </div>
             <div className="movie-options">
                 <span className="movie-options-icon" onClick={showOrHideMovieOptions}>
