@@ -31,5 +31,11 @@ module.exports = {
         })
     ],
     entry: ['@babel/polyfill', './src/index.js'],
-    target: 'node'
+    target: 'node',
+    output: {
+        publicPath: '/'
+    },
+    devServer: {
+        historyApiFallback: true
+    }
 };
