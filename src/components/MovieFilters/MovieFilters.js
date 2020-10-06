@@ -28,18 +28,17 @@ const MovieFilters = (props) => {
     const [sortArray] = useState(sortValues);
     const [filters] = useState(genresArray);
 
+    const { genreFilter, sortBy, search } = props;
+
     const onSortChange = (event) => {
         const value = event.target.value;
-        props.sortBy(value, props.genreFilter);
+        props.searchMovies(search, value, genreFilter);
     };
 
     const onGenreSelect = (event) => {
         const option = event.target.innerText.toLowerCase();
-        props.filterByGenre(option);
+        props.searchMovies(search, sortBy, option);
     };
-
-
-    const sortBy = 'release_date';
 
     return (
         <div className="movie-filters container">
@@ -65,19 +64,22 @@ const MovieFilters = (props) => {
 };
 
 MovieFilters.propTypes = {
-    genreFilter: PropTypes.string
+    genreFilter: PropTypes.string,
+    sortBy: PropTypes.string,
+    search: PropTypes.string
 };
 
 function mapStateToProps(state, ownProps) {
     return {
-        genreFilter: state.genreFilter
+        genreFilter: state.genreFilter,
+        sortBy: state.sortBy,
+        search: state.search
     };
 }
 
 const mapDispatcherToProps = (dispatch) => {
     return {
-        sortBy: (sortBy, genre) => dispatch(movieActions.getMovies('', sortBy, genre)),
-        filterByGenre: (genre) => dispatch(movieActions.getMoviesByGenre(genre))
+        searchMovies: (search, sortBy, genreFilter) => dispatch(movieActions.getMovies(search, sortBy, genreFilter))
     }
 }
 

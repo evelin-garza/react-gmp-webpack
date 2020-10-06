@@ -11,6 +11,16 @@
         font-weight: 200;
     }
 
+    .no-results {
+        display: flex;
+        justify-content: center;
+        color: white;
+        font-size: 28px;
+        font-weight: 200;
+        flex-grow: 1;
+        align-items: center;
+    }
+
     .movies-list {
         display: flex;
         flex-wrap: wrap;

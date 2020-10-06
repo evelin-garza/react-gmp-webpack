@@ -19,11 +19,13 @@ const MoviesList = ({ movies, message, clearMessage }) => {
                     </button>
                 </div>
             )}
-            <p className="movies-results"><b>{movies.length}</b> movies found</p>
+            {movies.length > 0 && (
+                <p className="movies-results"><b>{movies.length}</b> movies found</p>
+            )}
+            {movies.length == 0 && (
+                <div className="no-results">No Movie Found</div>
+            )}
             <div className="movies-list">
-                {movies.length == 0 && (
-                    <Loader />
-                )}
                 {movies.length > 0 &&
                     movies.map((movie, index) => (
                         <MovieCard
