@@ -1,0 +1,43 @@
+.main-container {
+    background: #232323;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    box-sizing: border-box;
+
+    .topbar {
+        padding: 20px 0;
+    }
+
+    .content {
+        background: inherit;
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+
+        h2 {
+            color: white;
+            font-size: 35px;
+            font-weight: 100;
+        }
+
+        p {
+            -webkit-text-stroke: 4px #F65261;
+            -webkit-text-fill-color: white;
+            font-size: 10em;
+        }
+
+        button {
+            background: none;
+            border: 1px solid #F65261;
+            border-radius: 6px;
+            text-transform: uppercase;
+            padding: 10px 30px;
+            font-size: 20px;
+            color: #F65261;
+            font-weight: 200;
+            cursor: pointer;
+        }
+    }
+}
