@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --open --config webpack.dev.js",
     "build:dev": "webpack --config webpack.dev.js",
     "build:prod": "webpack --env prod --config webpack.prod.js",
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "author": "Evelin Garza",
   "license": "ISC",
@@ -20,7 +20,8 @@
     "css-loader": "^4.2.0",
     "html-loader": "^1.1.0",
     "html-webpack-plugin": "^4.3.0",
-    "jest": "^26.2.2",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.5.3",
     "sass": "^1.26.10",
     "sass-loader": "^9.0.2",
     "style-loader": "^1.2.1",
@@ -31,6 +32,10 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.11.5",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.8",
+    "babel-jest": "^26.5.2",
     "formik": "^2.1.5",
     "multiselect-react-dropdown": "^1.5.7",
     "react": "^16.13.1",
@@ -39,6 +44,7 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
+    "redux-mock-store": "^1.5.4",
     "redux-thunk": "^2.3.0",
     "yup": "^0.29.3"
   }
