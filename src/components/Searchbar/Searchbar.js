@@ -7,8 +7,8 @@ import * as movieActions from "../../actions/movieActions";
 import "./Searchbar.scss";
 
 const Searchbar = (props) => {
-    const query = new URLSearchParams(useLocation().search);
     const location = useLocation();
+    const query = new URLSearchParams(location.search);
     const [searchQuery, setSearchQuery] = useState('');
     const history = useHistory();
 
