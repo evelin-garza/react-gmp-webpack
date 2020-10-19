@@ -15,7 +15,7 @@ const Modal = (props) => {
     return (
         <div className="modal-container">
             <div className="modal">
-                <button className="close-modal" onClick={onCloseModal}>
+                <button role="close" className="close-modal" onClick={onCloseModal}>
                     <i className="fa fa-times" aria-hidden="true"></i>
                 </button>
                 {props.children}
