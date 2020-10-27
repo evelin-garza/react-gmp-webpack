@@ -61,7 +61,20 @@ describe('movieReducer', () => {
         expect(state.movies).toEqual([mockMovie]);
     });
 
+    it('should handle movies/delete', () => {
+        const state = movieReducer(
+            {
+                ...initialState,
+                movies: mockMovies
+            },
+            {
+                type: MoviesActions.DELETE,
+                movies: [],
+            }
+        );
 
+        expect(state.movies.length).toEqual(0);
+    });
 
     it('should handle movies/clearSelected', () => {
         const state = movieReducer(
