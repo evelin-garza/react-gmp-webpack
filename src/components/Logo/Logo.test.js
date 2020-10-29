@@ -6,6 +6,7 @@ import Logo from "./Logo";
 describe('Logo Component', () => {
     it('should render logo', () => {
         const { asFragment } = render(<Logo />);
+
         expect(asFragment()).toMatchSnapshot();
     });
 });
